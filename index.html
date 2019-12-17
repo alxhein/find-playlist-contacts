@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Streamline Music</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  
+  <body id=body>
+    <h1 style="
+    font-family: helvetica;
+    text-align: center;">Find Playlist Curator Contacts</h1>
+      <div id="authorize">Authorize</div>
+      <div id="main-content">
+      <div class="search-container">
+          <input type="text" placeholder="Search for playlists..." name="search" id='playlist-search' autocomplete="off">
+          <button type="submit" id='submit-button'>Search</button>
+      </div>
+
+      <div id='contact-container'>
+        <div id='clear-button'>Clear</div>
+        <div id='download-button'>Download as CSV</div>
+        <table id='contact-table'>
+          <tr>
+            <th class='playlist-header'>Playlist</th>
+            <th class='owner-header'>Owner</th>
+            <th class='followers-header'>Followers</th>
+            <th class='contact-header'>Contact</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>

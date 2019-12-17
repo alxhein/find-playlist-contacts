@@ -1,0 +1,122 @@
+.playlist{
+    font-family: helvetica;
+    margin-left: 10px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    width: 400px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px grey;
+    margin-bottom: 10px;
+}
+
+#authorize{
+    border-radius: 30px;
+    width: 200px;
+    height: 30px;
+    color: white;
+    font-weight: 800;
+    margin: 0 auto;
+    font-family: helvetica;
+    text-align: center;
+    background-color: #00af00;
+    line-height: 30px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #717171;
+    transition: all;
+    transition-duration: 0.5s;
+}
+#authorize:hover{
+    box-shadow: 0px 0px 15px #717171;
+    background-color: #4cdc4c;
+}
+
+#download-button{
+    height: 30px;
+    line-height: 30px;
+    width: 200px;
+    margin: 10px;
+    background-color: #bfffca;
+    border-radius: 10px;
+    text-align: center;
+    font-family: helvetica;
+    color: #3c3c3c;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#clear-button{
+    height: 30px;
+    line-height: 30px;
+    width: 100px;
+    margin: 10px;
+    background-color: #bae9ff;
+    border-radius: 10px;
+    text-align: center;
+    font-family: helvetica;
+    color: #3c3c3c;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.search-container{
+    width: 400px;
+    margin: 50px auto;
+}
+#playlist-search{
+    width: 300px;
+    font-size: 15px;
+    height: 30px;
+    border: 1px solid #cecece;
+}
+#submit-button{
+    height: 35px;
+    width: 80px;
+    padding: 0px;
+    /* margin: 0px; */
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid #ababab;
+    background-image: linear-gradient(#ffffff, #b9b9b9);
+}
+
+#contact-container{
+    margin: 0 auto;
+    /* margin-left: 10%; */
+    width: 940px
+}
+
+#main-content{
+    display: none;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 4px;
+  }
+
+.playlist-header{
+    width: 300px;
+}
+.owner-header{
+    width: 151px;
+}
+.followers-header{
+    width: 151px;
+}
+.contact-header{
+    width: 301px;
+}
+
+.playlist-cell{
+    width: 300px;
+}
+.owner-cell{
+    width: 150px;
+}
+.followers-cell{
+    width: 150px;
+}
+.contact-cell{
+    width: 300px;
+}
