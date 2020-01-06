@@ -4,14 +4,29 @@
     <meta charset="UTF-8">
     <title>Streamline Music</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="icon" 
+      type="image/png" 
+      href="Streamline Icon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   </head>
   
   <body id=body>
-    <h1 style="
+      <!--
+      <h1 style="
     font-family: helvetica;
     text-align: center;">Find Playlist Curator Contacts</h1>
       <div id="authorize">Authorize</div>
+      -->
+      <div class='login' id='login'>
+        <img class='streamline-logo' src='Streamline-black-white.jpg'>
+        <p class='about'>Streamline Music's playlist contact tool searches through hundreds of Spotify playlists and finds emails and instagram contacts for the playlist owners. 
+          You can then view and download a spreadsheet of all the playlists and contacts for music promotion purposes, simplifying a process that usually takes hours for independent musicians.</p>
+        <h3>Login With Spotify</h3>
+        <div class='spotify-login-button' id='authorize'>
+            <p>Log In</p>
+        </div>
+      </div> 
+
       <div id="main-content">
       <div class="search-container">
           <input type="text" placeholder="Search for playlists..." name="search" id='playlist-search' autocomplete="off">
