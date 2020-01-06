@@ -95,8 +95,6 @@ class Playlist{
   const redirectUri = 'https://streamlinemusic.net/';
   const scopes = [
     'playlist-read-collaborative',
-    'playlist-modify-private',
-    'playlist-modify-public',
     'playlist-read-private'
   ];
   
