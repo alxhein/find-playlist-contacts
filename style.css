@@ -86,7 +86,7 @@
 }
 
 #main-content{
-    /*display: none;*/
+    display: none;
 }
 
 table, th, td {
@@ -123,7 +123,6 @@ table, th, td {
 
 .login{
     text-align: center;
-    display: none;
 }
 .login h3{
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
