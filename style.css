@@ -167,5 +167,11 @@ table, th, td {
     width: 500px;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0 auto;
-    color: #313131;
+    color: #1a1a1a;
+}
+
+.support{
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    color: rgb(84, 84, 84);
 }
