@@ -287,7 +287,7 @@ class Playlist{
     row.appendChild(contact);
   
     //append to tbody element
-    table.appendChild(row);
+    table.lastElementChild.appendChild(row);
   }
   
   //search spotify for playlists
