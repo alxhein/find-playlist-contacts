@@ -175,6 +175,14 @@ table, th, td {
     font-size: 14px;
     color: rgb(84, 84, 84);
 }
+#search-progress{
+    margin-top: 20px;
+    font-family: sans-serif;
+    display: none;
+}
+#playlists-searched{
+    display: inline;
+}
 
 @media only screen and (max-width: 768px){
     .login .streamline-logo{

@@ -110,6 +110,9 @@ class Playlist{
   var table = document.getElementById('contact-table');
   var clear = document.getElementById('clear-button');
   var downloadCSVButton = document.getElementById('download-button');
+  var searchProgress = document.getElementById('search-progress');
+  var playlistsSearched = document.getElementById('playlists-searched');
+  let playlistCount = 0;
   
   //authorize with Spotify
   authorizeButton.onclick = function(){
@@ -125,7 +128,6 @@ class Playlist{
     
     //submit button searches for playlists and gets contacts
     submit.onclick = function(){
-  
       let searchInput = search.value;
       getEmailsFromSearch(searchInput, _token);
     }
@@ -133,6 +135,10 @@ class Playlist{
     //clear button clears the table
     clear.onclick = function(){
       
+      playlistCount = 0;
+      playlistsSearched.innerHTML = '0';
+      searchProgress.style.display = 'none';
+
       while(table.childElementCount > 1){
         table.children[1].outerHTML = '';
       }
@@ -148,6 +154,9 @@ class Playlist{
     let offset = 0;
     let playlistIds = [];
     let idSet = [];;
+
+    searchProgress.style.display = 'block';
+
     for(let i=0; i<20; i++){
       idSet = await searchSpotify(query, _token, offset);
       playlistIds = playlistIds.concat(idSet);
@@ -165,6 +174,8 @@ class Playlist{
       isLink = false;
       playlists[i] = await getPlaylistInfo(playlistIds[i], _token);
       console.log(playlists[i]);
+      playlistCount++;
+      playlistsSearched.innerHTML = playlistCount;
       if(playlists[i]){
         if(playlists[i].description){
         let atIndex = playlists[i].description.lastIndexOf("@");
