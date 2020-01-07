@@ -139,9 +139,7 @@ class Playlist{
       playlistsSearched.innerHTML = '0';
       searchProgress.style.display = 'none';
 
-      while(table.childElementCount > 1){
         $("#contact-table tbody tr").remove();
-      }
     }
   
     downloadCSVButton.onclick = function(){
@@ -289,7 +287,7 @@ class Playlist{
     row.appendChild(contact);
   
     //append to tbody element
-    table.firstElementChild.appendChild(row);
+    table.appendChild(row);
   }
   
   //search spotify for playlists
