@@ -213,7 +213,6 @@ table, th, td {
     }
     .button-container{
         width: 320px;
-        margin: 0 auto;
     }
 }
 
@@ -231,7 +230,6 @@ table, th, td {
     #contact-container{
         margin: 0 auto;
         /* margin-left: 10%; */
-        width: 100%;
     }
     .button-container{
         margin: 0px;
