@@ -140,7 +140,7 @@ class Playlist{
       searchProgress.style.display = 'none';
 
       while(table.childElementCount > 1){
-        table.children[1].outerHTML = '';
+        $("#contact-table tbody tr").remove();
       }
     }
   
