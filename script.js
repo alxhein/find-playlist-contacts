@@ -187,6 +187,9 @@ class Playlist{
         else if((firstHalf.lastIndexOf(">")!=-1) && (firstHalf.lastIndexOf(">")!=atIndex-1)){
           firstHalf = firstHalf.substring(firstHalf.lastIndexOf(">")+1);
         }
+        else if((firstHalf.lastIndexOf(":")!=-1) && (firstHalf.lastIndexOf(":")!=atIndex-1)){
+          firstHalf = firstHalf.substring(firstHalf.lastIndexOf(":")+1);
+        }
         else if(firstHalf.lastIndexOf(" ") !=-1){
           firstHalf = firstHalf.substring(firstHalf.lastIndexOf(" "));
         }
