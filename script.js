@@ -201,7 +201,7 @@ async function getEmails(playlistIds, _token) {
               addPlaylistTableRow(playlists[i]);
             }
             else{
-              console.log(playlists[i].description + " !!!!!!!! both arrays have elements!");
+              console.log(playlists[i].description + " !!!!!!!! both arrays have elements");
 
               let contacts = usernames.concat(emails);
               let contactString = contacts.join(', ');
