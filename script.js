@@ -165,60 +165,68 @@ class Playlist{
   }
   
   //parses the playlist descriptions to find contact information
-  async function getEmails(playlistIds, _token){
-      let playlists = [];
-      let contact;
-    for(let i=0; i<playlistIds.length; i++){
+async function getEmails(playlistIds, _token) {
+  let playlists = [];
+  for (let i = 0; i < playlistIds.length; i++) {
       isLink = false;
       playlists[i] = await getPlaylistInfo(playlistIds[i], _token);
       console.log(playlists[i]);
       playlistCount++;
       playlistsSearched.innerHTML = playlistCount;
-      if(playlists[i]){
-        if(playlists[i].description){
-        let atIndex = playlists[i].description.lastIndexOf("@");
-        if(atIndex!=-1){
-        let firstHalf = playlists[i].description.substring(0, atIndex);
-        let secondHalf = playlists[i].description.substring(atIndex);
-        
-        if(playlists[i].description.substring(atIndex-1, atIndex) == ">"){
-          firstHalf = firstHalf.substring(atIndex);
-        }
-        else if((firstHalf.lastIndexOf(">")!=-1) && (firstHalf.lastIndexOf(">")!=atIndex-1)){
-          firstHalf = firstHalf.substring(firstHalf.lastIndexOf(">")+1);
-        }
-        else if((firstHalf.lastIndexOf(":")!=-1) && (firstHalf.lastIndexOf(":")!=atIndex-1)){
-          firstHalf = firstHalf.substring(firstHalf.lastIndexOf(":")+1);
-        }
-        else if(firstHalf.lastIndexOf(" ") !=-1){
-          firstHalf = firstHalf.substring(firstHalf.lastIndexOf(" "));
-        }
-        
-        if(secondHalf.indexOf(" ") != -1){
-          secondHalf = secondHalf.substring(0, secondHalf.indexOf(" "));
-        }
-        if(secondHalf.indexOf(")") != -1){
-          secondHalf = secondHalf.substring(0, secondHalf.indexOf(")"));
-        }
-        if(secondHalf.indexOf("]") != -1){
-          secondHalf = secondHalf.substring(0, secondHalf.indexOf("]"));
-        }
-        if(secondHalf.substring(secondHalf.length-1) == "."){
-          secondHalf = secondHalf.substring(0, secondHalf.length-1);
-        }
-  
-        contact = firstHalf + secondHalf;
-        contact = contact.trim();
-        if(contact.length > 3){
-          console.log(contact);
-          playlists[i].contact = contact;
-          addPlaylistTableRow(playlists[i]);
-        }
+      if (playlists[i]) {
+          if (playlists[i].description) {
+            let emails = findEmailAddresses(playlists[i].description);
+            let usernames = findInstagramUsername(playlists[i].description);
+            if( !(emails == null && usernames == null)){
+              let contacts = emails.concat(usernames);
+              let contactString = contacts.join(', ');
+              playlists[i].contact = contactString;
+              addPlaylistTableRow(playlists[i]);
+            }
+
+            
+            /*
+            let atIndex = playlists[i].description.lastIndexOf("@");
+              if (atIndex != -1) {
+                  let firstHalf = playlists[i].description.substring(0, atIndex);
+                  let secondHalf = playlists[i].description.substring(atIndex);
+
+                  if (playlists[i].description.substring(atIndex - 1, atIndex) == ">") {
+                      firstHalf = firstHalf.substring(atIndex);
+                  } else if ((firstHalf.lastIndexOf(">") != -1) && (firstHalf.lastIndexOf(">") != atIndex - 1)) {
+                      firstHalf = firstHalf.substring(firstHalf.lastIndexOf(">") + 1);
+                  } else if ((firstHalf.lastIndexOf(":") != -1) && (firstHalf.lastIndexOf(":") != atIndex - 1)) {
+                      firstHalf = firstHalf.substring(firstHalf.lastIndexOf(":") + 1);
+                  } else if (firstHalf.lastIndexOf(" ") != -1) {
+                      firstHalf = firstHalf.substring(firstHalf.lastIndexOf(" "));
+                  }
+
+                  if (secondHalf.indexOf(" ") != -1) {
+                      secondHalf = secondHalf.substring(0, secondHalf.indexOf(" "));
+                  }
+                  if (secondHalf.indexOf(")") != -1) {
+                      secondHalf = secondHalf.substring(0, secondHalf.indexOf(")"));
+                  }
+                  if (secondHalf.indexOf("]") != -1) {
+                      secondHalf = secondHalf.substring(0, secondHalf.indexOf("]"));
+                  }
+                  if (secondHalf.substring(secondHalf.length - 1) == ".") {
+                      secondHalf = secondHalf.substring(0, secondHalf.length - 1);
+                  }
+
+                  contact = firstHalf + secondHalf;
+                  contact = contact.trim();
+                  if (contact.length > 3) {
+                      console.log(contact);
+                      playlists[i].contact = contact;
+                      addPlaylistTableRow(playlists[i]);
+                  }
+              }
+              */
+          }
       }
-    }
-      }
-    }
   }
+}
   
   //get information about the playlist
   async function getPlaylistInfo(playlistId, _token){
@@ -368,3 +376,29 @@ class Playlist{
   
     downloadCSV(csv.join("\n"), filename)
   }
+
+  function findEmailAddresses(string) {
+    var emailArray = string.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+		return emailArray;
+  }
+  
+function findInstagramUsername(string) {
+    var regex = /(?:@)([A-Za-z0-9_](?:(?:[A-Za-z0-9_]|(?:\.(?!\.))){0,28}(?:[A-Za-z0-9_]))?)/g;
+    var match = null;
+    var matches = new Array();
+    var finalArray = [];
+    while (match = regex.exec(string)) {
+        var matchArray = [];
+        for (i in match) {
+            if (parseInt(i) == i) {
+                matchArray.push(match[i]);
+            }
+        }
+        matches.push(matchArray);
+    }
+    
+    for(let i=0; i<matches.length; i++){
+       final.push(matches[i][0]);
+    }
+    return finalArray;
+};
