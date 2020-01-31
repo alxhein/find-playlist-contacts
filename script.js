@@ -190,23 +190,30 @@ async function getEmails(playlistIds, _token) {
               console.log(playlists[i].description + " !!!!!!!! just emails null");
               
               let contactString = usernames.join(', ');
-              playlists[i].contact = contactString;
-              addPlaylistTableRow(playlists[i]);
+
+              if(contactString.length > 1){
+                playlists[i].contact = contactString;
+                addPlaylistTableRow(playlists[i]);
+              }
             }
             else if(usernames==null){
               console.log(playlists[i].description + " !!!!!!!! just usernames null");
 
               let contactString = emails.join(', ');
-              playlists[i].contact = contactString;
-              addPlaylistTableRow(playlists[i]);
+              if(contactString.length > 1){
+                playlists[i].contact = contactString;
+                addPlaylistTableRow(playlists[i]);
+              }
             }
             else{
               console.log(playlists[i].description + " !!!!!!!! both arrays have elements");
 
               let contacts = usernames.concat(emails);
               let contactString = contacts.join(', ');
-              playlists[i].contact = contactString;
-              addPlaylistTableRow(playlists[i]);
+              if(contactString.length > 1){
+                playlists[i].contact = contactString;
+                addPlaylistTableRow(playlists[i]);
+              }
             }
 
             
