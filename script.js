@@ -177,8 +177,22 @@ async function getEmails(playlistIds, _token) {
           if (playlists[i].description) {
             let emails = findEmailAddresses(playlists[i].description);
             let usernames = findInstagramUsername(playlists[i].description);
-            if( !(emails == null && usernames == null)){
-              let contacts = emails.concat(usernames);
+            
+            if(emails==null && usernames == null){
+              //do nothing
+            }
+            else if(emails==null){
+              let contactString = usernames.join(', ');
+              playlists[i].contact = contactString;
+              addPlaylistTableRow(playlists[i]);
+            }
+            else if(usernames==null){
+              let contactString = emails.join(', ');
+              playlists[i].contact = contactString;
+              addPlaylistTableRow(playlists[i]);
+            }
+            else{
+              let contacts = usernames.concat(emails);
               let contactString = contacts.join(', ');
               playlists[i].contact = contactString;
               addPlaylistTableRow(playlists[i]);
