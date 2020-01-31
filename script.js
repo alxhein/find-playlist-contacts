@@ -180,18 +180,25 @@ async function getEmails(playlistIds, _token) {
             
             if(emails==null && usernames == null){
               //do nothing
+              console.log(playlists[i].description + " !!!!!!!! emails and usernames null");
             }
             else if(emails==null){
+              console.log(playlists[i].description + " !!!!!!!! just emails null");
+              
               let contactString = usernames.join(', ');
               playlists[i].contact = contactString;
               addPlaylistTableRow(playlists[i]);
             }
             else if(usernames==null){
+              console.log(playlists[i].description + " !!!!!!!! just usernames null");
+
               let contactString = emails.join(', ');
               playlists[i].contact = contactString;
               addPlaylistTableRow(playlists[i]);
             }
             else{
+              console.log(playlists[i].description + " !!!!!!!! both arrays have elements");
+
               let contacts = usernames.concat(emails);
               let contactString = contacts.join(', ');
               playlists[i].contact = contactString;
@@ -412,7 +419,7 @@ function findInstagramUsername(string) {
     }
     
     for(let i=0; i<matches.length; i++){
-       final.push(matches[i][0]);
+       finalArray.push(matches[i][0]);
     }
     return finalArray;
 };
