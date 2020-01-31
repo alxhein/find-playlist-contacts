@@ -170,13 +170,17 @@ async function getEmails(playlistIds, _token) {
   for (let i = 0; i < playlistIds.length; i++) {
       isLink = false;
       playlists[i] = await getPlaylistInfo(playlistIds[i], _token);
-      console.log(playlists[i]);
+      //console.log(playlists[i]);
       playlistCount++;
       playlistsSearched.innerHTML = playlistCount;
       if (playlists[i]) {
           if (playlists[i].description) {
             let emails = findEmailAddresses(playlists[i].description);
-            let usernames = findInstagramUsername(playlists[i].description);
+            let usernames;
+            console.log(emails);
+            if(emails==null){
+              usernames = findInstagramUsername(playlists[i].description);
+            }
             
             if(emails==null && usernames == null){
               //do nothing
